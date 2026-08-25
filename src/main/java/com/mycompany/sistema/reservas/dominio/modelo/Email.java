@@ -1,19 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Record.java to edit this template
- */
 package com.mycompany.sistema.reservas.dominio.modelo;
-
-/**
- *
- * @author daferarte
- */
-
 import java.util.regex.Pattern;
 
 public record Email(String valor) {
-    private static final Pattern PATRON_EMAIL = 
-        Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
+    private static final Pattern PATRON_EMAIL = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
     
     public Email {
         if (valor == null || valor.isBlank()) {

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.sistema.reservas.dominio;
 
 import com.mycompany.sistema.reservas.dominio.modelo.Cliente;
@@ -17,7 +13,6 @@ import politicas.DescuentoEstadiaLarga;
 import repositorio.ReservaArchivoRepository;
 import servicio.ConfirmacionReservaConHabitacionService;
 
-/** Ejemplo ejecutable de las extensiones agregadas al sistema. */
 public class DemoExtensionDominioRico {
     public static void main(String[] args) {
         Cliente cliente = new Cliente("Ana Gómez", new Email("ana@correo.com"));

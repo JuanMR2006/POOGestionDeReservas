@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package repositorio;
 
 import com.mycompany.sistema.reservas.dominio.modelo.Reserva;
@@ -11,22 +7,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-/** Persistencia alternativa que registra una confirmación por línea de texto. */
 public class ReservaArchivoRepository implements ReservaRepository {
     private final Path archivo;
 
     public ReservaArchivoRepository(String rutaArchivo) {
-        if (rutaArchivo == null || rutaArchivo.isBlank()) {
-            throw new IllegalArgumentException("La ruta del archivo es obligatoria");
-        }
+        if (rutaArchivo == null || rutaArchivo.isBlank()) throw new IllegalArgumentException("La ruta del archivo es obligatoria");
         this.archivo = Path.of(rutaArchivo);
     }
 
     @Override
     public void guardar(Reserva reserva) {
-        if (reserva == null) {
-            throw new IllegalArgumentException("La reserva es obligatoria");
-        }
+        if (reserva == null) throw new IllegalArgumentException("La reserva es obligatoria");
         String linea = "Reserva ID: " + reserva.getId()
                 + " | Cliente: " + reserva.getCliente().getNombre()
                 + " | Periodo: " + reserva.getPeriodo().fechaInicio()

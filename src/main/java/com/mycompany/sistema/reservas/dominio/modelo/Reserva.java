@@ -1,31 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.sistema.reservas.dominio.modelo;
 
 import java.util.UUID;
 
-/**
- *
- * @author daferarte
- */
 public class Reserva {
-    private final UUID id;            // Inmutable 
-    private final Cliente cliente;    // Asociación directa con la entidad Cliente
-    private RangoFechas periodo;      // Value Object
+    private final UUID id;
+    private final Cliente cliente;
+    private final RangoFechas periodo;
     private EstadoReserva estado;
     
     public Reserva(Cliente cliente, RangoFechas periodo) {
-        if (cliente == null) {
-            throw new IllegalArgumentException("El cliente es obligatorio");
-        }
+        if (cliente == null) throw new IllegalArgumentException("El cliente es obligatorio");
         if (!cliente.puedeRealizarReservas()) {
             throw new IllegalStateException("El cliente '" + cliente.getNombre() + "' no está habilitado para realizar reservas");
         }
-        if (periodo == null) {
-            throw new IllegalArgumentException("El periodo de la reserva es obligatorio");
-        }
+        if (periodo == null) throw new IllegalArgumentException("El periodo de la reserva es obligatorio");
 
         this.id = UUID.randomUUID();
         this.cliente = cliente;
@@ -34,17 +22,14 @@ public class Reserva {
     }
     
     public void confirmar() {
-        if (this.estado == EstadoReserva.CANCELADA) {
+        if (estado == EstadoReserva.CANCELADA) {
             throw new IllegalStateException("No se puede confirmar una reserva que ha sido cancelada");
         }
-        this.estado = EstadoReserva.CONFIRMADA;
+        estado = EstadoReserva.CONFIRMADA;
     }
     
     public void cancelar() {
-        if (this.estado == EstadoReserva.CONFIRMADA) {
-            // reglas cancelar
-        }
-        this.estado = EstadoReserva.CANCELADA;
+        estado = EstadoReserva.CANCELADA;
     }
     
     public UUID getId() { return id; }

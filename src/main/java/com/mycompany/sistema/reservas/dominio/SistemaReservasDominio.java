@@ -1,38 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.sistema.reservas.dominio;
 
 import com.mycompany.sistema.reservas.dominio.modelo.Cliente;
 import com.mycompany.sistema.reservas.dominio.modelo.Email;
 import com.mycompany.sistema.reservas.dominio.modelo.Reserva;
 import com.mycompany.sistema.reservas.dominio.modelo.RangoFechas;
-import com.mycompany.sistema.reservas.dominio.modelo.ReservaAnemica;
-import com.mycompany.sistema.reservas.dominio.modelo.EstadoReserva;
-
 import java.time.LocalDateTime;
-
-/**
- *
- * @author daferarte
- */
 public class SistemaReservasDominio {
 
     public static void main(String[] args) {
-//        ReservaAnemica reserva = new ReservaAnemica();
-//        
-//        // PROBLEMA 
-//        reserva.setFechaInicio(LocalDateTime.now().plusDays(5));
-//        reserva.setFechaFin(LocalDateTime.now().plusDays(2)); // ¡Invalido!
-//
-//        // PROBLEMA 
-//        reserva.setEstado("CONFIRMADA");
-//        reserva.setEstado("CANCELADA");
-//        reserva.setEstado("CONFIRMADA"); // ¡Una reserva cancelada no debería reconfirmarse sin validar!
-//        
-//        System.out.println("Reserva creada con estado: " + reserva.getEstado());
-        
         try {
             
             Email email = new Email("juan.perez@empresa.com");

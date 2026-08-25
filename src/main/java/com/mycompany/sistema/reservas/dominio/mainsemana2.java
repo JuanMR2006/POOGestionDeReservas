@@ -13,15 +13,6 @@ import repositorio.ReservaMemoriaRepository;
 import repositorio.ReservaRepository;
 import servicio.ConfirmacionReservaService;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author daferarte
- */
 public class mainsemana2 {
     public static void main(String[] args) {
         // 1. Instanciar Entidades y Value Objects de Semana 1

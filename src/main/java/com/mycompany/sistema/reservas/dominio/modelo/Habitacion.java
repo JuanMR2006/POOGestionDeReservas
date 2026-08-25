@@ -1,29 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.sistema.reservas.dominio.modelo;
-
-/** Entidad que protege las transiciones de estado de una habitación. */
 public class Habitacion {
     private final NumeroHabitacion numeroHabitacion;
     private final int capacidadMaxima;
     private EstadoHabitacion estado;
 
     public Habitacion(NumeroHabitacion numeroHabitacion, int capacidadMaxima) {
-        if (numeroHabitacion == null) {
-            throw new IllegalArgumentException("El número de habitación es obligatorio");
-        }
-        if (capacidadMaxima < 1) {
-            throw new IllegalArgumentException("La capacidad máxima debe ser mínimo de una persona");
-        }
+        if (numeroHabitacion == null) throw new IllegalArgumentException("El número de habitación es obligatorio");
+        if (capacidadMaxima < 1) throw new IllegalArgumentException("La capacidad máxima debe ser mínimo de una persona");
         this.numeroHabitacion = numeroHabitacion;
         this.capacidadMaxima = capacidadMaxima;
         this.estado = EstadoHabitacion.DISPONIBLE;
     }
 
     public boolean estaDisponible() {
-        return estado == EstadoHabitacion.DISPONIBLE;
+        return estado.equals(EstadoHabitacion.DISPONIBLE);
     }
 
     public void ocupar() {
@@ -34,14 +24,14 @@ public class Habitacion {
     }
 
     public void liberar() {
-        if (estado == EstadoHabitacion.MANTENIMIENTO) {
+        if (estado.equals(EstadoHabitacion.MANTENIMIENTO)) {
             throw new IllegalStateException("Una habitación en mantenimiento no puede liberarse");
         }
         estado = EstadoHabitacion.DISPONIBLE;
     }
 
     public void enviarAMantenimiento() {
-        if (estado == EstadoHabitacion.OCUPADA) {
+        if (estado.equals(EstadoHabitacion.OCUPADA)) {
             throw new IllegalStateException("No se puede enviar a mantenimiento una habitación ocupada");
         }
         estado = EstadoHabitacion.MANTENIMIENTO;
