@@ -1,0 +1,48 @@
+@startuml
+skinparam classAttributeIconSize 0
+package modelo {
+  class Reserva
+  class ReservaConHabitacion
+  class Habitacion {
+    - capacidadMaxima: int
+    - estado: EstadoHabitacion
+    + ocupar()
+    + liberar()
+  }
+  class Cliente
+  class RangoFechas <<Value Object>>
+  class NumeroHabitacion <<Value Object>>
+  enum EstadoHabitacion
+}
+package politicas {
+  interface PoliticaDescuento
+  class DescuentoTemporadaBaja
+  class DescuentoEstadiaLarga
+}
+package notificacion {
+  interface NotificadorService
+  class WhatsAppNotificadorService
+  class PushNotificadorService
+}
+package repositorio {
+  interface ReservaRepository
+  class ReservaArchivoRepository
+}
+package servicio {
+  class ConfirmacionReservaConHabitacionService
+}
+ReservaConHabitacion *-- Reserva
+ReservaConHabitacion *-- Habitacion
+Habitacion *-- NumeroHabitacion
+Habitacion --> EstadoHabitacion
+Reserva --> Cliente
+Reserva --> RangoFechas
+PoliticaDescuento <|.. DescuentoTemporadaBaja
+PoliticaDescuento <|.. DescuentoEstadiaLarga
+NotificadorService <|.. WhatsAppNotificadorService
+NotificadorService <|.. PushNotificadorService
+ReservaRepository <|.. ReservaArchivoRepository
+ConfirmacionReservaConHabitacionService --> ReservaRepository
+ConfirmacionReservaConHabitacionService --> NotificadorService
+ConfirmacionReservaConHabitacionService --> PoliticaDescuento
+@enduml
